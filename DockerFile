@@ -1,0 +1,48 @@
+FROM ubuntu:latest
+
+LABEL author="shivam"
+
+# Note: Run instruction is used to execute the commands.
+# but if we use Run instruction again & again the dockerfile size will be increased
+# so we use "\" backward slash that will asume it is single commmad.
+# using "\" we can execute multiple commands.
+
+RUN apt-get update 
+RUN apt-get install apache2 unzip -y
+
+ADD https://templatemo.com/download/templatemo_578_first_portfolio 
+
+RUN rm -rf /var/www/html/index.html && \
+unzip templatemo_578_first_portfolio.zip -d /var/www/html/ && \
+mv /templatemo_578_first_portfolio/* /var/www/html/
+# Here we have removed the default index.html fileof apache server and unzipped 
+# the downloaded webapp & moved all the content to apache server root directory
+
+EXPOSE 80
+# we are exposing port 80 to access our webapp
+
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+instance launch 
+folder unzip files 
+dockefile 
+
+
+
+
+
+
+
